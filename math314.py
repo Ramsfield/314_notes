@@ -38,3 +38,8 @@ def pbootstrap(data, R, fun, initval = None, ncpus=4):
     N=data.shape[0]
     thetas = Parallel(ncpus)(delayed(boot)(data, N, fun, initval) for _ in range(R))
     return np.asarray(thetas)
+
+def adjustedR2(y, mu, k):
+    error = y - mu
+    N= y.shape[0]
+    return 1 - (np.var(error) / np.var(y)) * (N-1)/(N-k)

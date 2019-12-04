@@ -43,3 +43,6 @@ def adjustedR2(y, mu, k):
     error = y - mu
     N= y.shape[0]
     return 1 - (np.var(error) / np.var(y)) * (N-1)/(N-k)
+
+def predict_normal(beta, X):
+    return np.sum(beta * X, axis=1)
